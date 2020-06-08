@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "hViPv+Oc4rfS/+VIBk0h2fbzxqeqR+5D59gT2eJ3cUWHKFz/Du9hFNdmUME1ZoREJuOIQKpiS2ahGKHEXp/Q0A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\vIsIon\\source\\repos\\WebApplication\\WebApplication\\WebApplication.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\vIsIon\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}

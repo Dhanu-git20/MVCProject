@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebApplication.Models.PatientModel>
+
+@{
+    Layout = null;
+
+}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name=" viewport" content="Width=device-width" />
+    <title>PatientAdd</title>
+</head>
+
+<body>
+    <form action="/Patient/Submit" method="post">
+        <h2>Patient Details</h2>
+        Patient Name:-<input type="text" id="pname" name="name" /><br><br />
+        Patient Problem:-<input type="text" id="pproblem" name="problem" /><br />
+        <br><input id="Button" type="submit" value="Add Patient" />
+    </form>
+    <br />
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Problem</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.name</td>
+                <td>@item.problem</td>
+            </tr>
+
+        }
+    </table>
+</body>
+
+</html>
