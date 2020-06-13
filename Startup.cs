@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json.Serialization;
 
 namespace WebApplication
 {
@@ -26,7 +28,17 @@ namespace WebApplication
                 options.Cookie.IsEssential = true;
             });
 
+            services.AddControllers().AddNewtonsoftJson(Options => {
+                Options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                }); 
             services.AddControllersWithViews();
+            services.AddCors(o => o.AddPolicy("AllowOriginRule", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +58,7 @@ namespace WebApplication
             app.UseStaticFiles();
 
             app.UseRouting();
-           
+            app.UseCors("AllowOriginRule");
             app.UseAuthorization();
             app.UseSession();   
 
@@ -54,7 +66,7 @@ namespace WebApplication
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Patient}/{action=Add}");
+                    pattern: "{controller=Home}/{action=Index}");
 
                 endpoints.MapControllerRoute(
                    name: "ufurl1",
