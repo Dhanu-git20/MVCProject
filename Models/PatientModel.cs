@@ -8,6 +8,8 @@ namespace WebApplication.Models
 {
     public class PatientModel
     {
+        public int id { get; set; }
+
         [Required]
         [RegularExpression("^[a-z]{1,10}$")]
         public string name { get; set;}

@@ -22,9 +22,11 @@ namespace WebApplication.Dal
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<PatientModel>().HasKey(p => p.id);
+            modelBuilder.Entity<PatientModel>().Property(t => t.id).ValueGeneratedNever();
             modelBuilder.Entity<PatientModel>()
                 .ToTable("tblPatient");
-            modelBuilder.Entity<PatientModel>().HasKey(p => p.name);
+            
         }
         public DbSet<PatientModel> PatientModels { get; set; }
     }
