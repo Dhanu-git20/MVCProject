@@ -40,7 +40,15 @@ namespace WebApplication.Controllers
                 return StatusCode(500, result);
             }
         }
-
+        public IActionResult Search(string patientName)
+        {
+            PatientDal dal = new PatientDal(constr);
+            List<PatientModel> search=(from temp in dal.PatientModels
+                                       where temp.name==patientName
+                                       select temp)
+                                        .ToList<PatientModel>();
+            return Ok(search);
+        }
 
         
     }
